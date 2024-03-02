@@ -3,8 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:recase/recase.dart';
 
 import '../constants/constants.dart';
-import '../providers/temp_settings/temp_settings_provider.dart';
-import '../providers/weather/weather_provider.dart';
+import '../providers/providers.dart';
 import '../widgets/error_dialog.dart';
 import 'search_page.dart';
 import 'settings_page.dart';

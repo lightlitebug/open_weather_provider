@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/temp_settings/temp_settings_provider.dart';
+import '../providers/providers.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
