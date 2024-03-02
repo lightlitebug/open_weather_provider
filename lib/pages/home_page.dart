@@ -3,9 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:recase/recase.dart';
 
 import '../constants/constants.dart';
+import '../providers/temp_settings/temp_settings_provider.dart';
 import '../providers/weather/weather_provider.dart';
 import '../widgets/error_dialog.dart';
 import 'search_page.dart';
+import 'settings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -40,6 +42,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   String showTemperature(double temperature) {
+    final tempUnit = context.watch<TempSettingsProvider>().state.tempUnit;
+
+    if (tempUnit == TempUnit.fahrenheit) {
+      return '${((temperature * 9 / 5) + 32).toStringAsFixed(2)}℉';
+    }
+
     return '${temperature.toStringAsFixed(2)}℃';
   }
 
@@ -184,6 +192,17 @@ class _HomePageState extends State<HomePage> {
                 weatherContext.fetchWeather(_city!);
               }
             },
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return const SettingsPage();
+                }),
+              );
+            },
+            icon: const Icon(Icons.settings),
           ),
         ],
       ),
